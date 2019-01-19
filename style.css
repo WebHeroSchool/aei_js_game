@@ -1,0 +1,225 @@
+body {
+    background-image: url(images/mainGrassBackground.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #79be4d;
+    font-family: Montserrat, sans-serif;
+    margin: 21px 0 0 0;
+}
+
+button {
+    font-family: Montserrat, monospace;
+    color: #27A8F3;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.main-wrapper{
+    padding-left: 0;
+}
+.header {
+    margin: 0 auto 152px auto;
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    width: 100%;
+    max-width: 1360px;
+    height: 100px;
+    position: relative;
+}
+
+.character-bar__speed {
+    width: 136px;
+    height: 136px;
+    background: #FFFFFF;
+    box-shadow: 1px 4px 4px rgba(0.09, 0.09, 0, 0.09);
+    border-radius: 50%;
+    position: absolute;
+    top: 23px;
+    left: 10px;
+    z-index: 3;
+}
+
+.character-bar__star{
+    position: absolute;
+    top: 33px;
+    left: 32px;
+    z-index: 4;
+    font-size: 24px;
+
+}
+
+/*.speed-up {*/
+    /*animation: speedup 3s 1 linear;*/
+/*}*/
+
+/*@keyframes speedup {*/
+    /*from {*/
+        /*transform: translate(0, 0);*/
+    /*}*/
+    /*20% {*/
+        /*transform: translate(0, 120px);*/
+
+    /*}*/
+    /*80% {*/
+
+        /*transform: rotate(0deg);*/
+    /*}*/
+    /*90% {*/
+
+        /*transform: rotate(500deg);*/
+    /*}*/
+    /*95% {*/
+
+        /*transform: rotate(780deg);*/
+    /*}*/
+    /*100% {*/
+        /*transform: translate(0, 0);*/
+
+    /*}*/
+/*}*/
+
+
+.character-bar__scores {
+    width: 183px;
+    height: 45px;
+    background: #A0B4BE;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 62px;
+    border: 11px #FFFFFF solid;
+    position: absolute;
+    top: 38px;
+    left: 70px;
+    font-size: 35px;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 5px 0 0 31px;
+    z-index: 2;
+}
+
+.character-bar__lives {
+    width: 193px;
+    height: 46px;
+    background: #FFFFFF;
+    box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 62px;
+    position: absolute;
+    top: 104px;
+    left: 60px;
+    z-index: 1;
+}
+.character-bar__lives-box{
+    position: absolute;
+    top: 15px;
+    left: 95px;
+
+}
+.character-bar__heart {
+   padding-right: 2px;
+}
+
+.buttons-area {
+    margin: 5px;
+    padding: 5px;
+    flex: 0 1 50%;
+    align-self: center;
+    display: flex;
+    justify-content: flex-end;
+
+
+}
+
+.button-start {
+    font-size: 20px;
+    width: 233px;
+    height: 71px;
+    background: #FFFFFF;
+    border: 8px solid #FFFFFF;
+    border-radius: 62px;
+    outline:none;
+    margin-right: 17px;
+    transition: .3s;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+
+.button-help {
+    font-size: 30px;
+    width: 71px;
+    height: 71px;
+    background: #FFFFFF;
+    border: 8px solid #FFFFFF;
+    border-radius: 62px;
+    outline:none;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    transition: .3s;
+}
+
+
+.button-start:hover,
+.button-help:hover  {
+    color: #FFFFFF;
+    background: #27A8F3;
+    transition: .3s ease-in-out;
+}
+
+
+.game-area {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+    height: 470px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.game-area__wrapper {
+    width: 30%;
+    height: 245px;
+    position: relative;
+}
+
+.game-area__hole {
+    width: 225px;
+    height: 167px;
+    border-radius: 140px / 100px;
+    background: #AE8348;
+    box-shadow: inset 0 9px 10px rgba(0, 0, 0, 0.2);
+    position: absolute;
+}
+
+.hole-1 {
+    top: 25px;
+    left: 9px;
+}
+
+.hole-2 {
+    left: 44px;
+    bottom: 3px;
+}
+
+.hole-3 {
+    top: 0;
+    right: 0;
+
+}
+
+.hole-4 {
+    left: 16px;
+    bottom: 39px;
+}
+
+.hole-5 {
+    left: 41px;
+    bottom: 34px;
+}
