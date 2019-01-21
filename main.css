@@ -20,9 +20,10 @@ button {
     text-transform: uppercase;
 }
 
-.main-wrapper{
+.main-wrapper {
     padding-left: 0;
 }
+
 .header {
     margin: 0 auto 152px auto;
     display: flex;
@@ -46,7 +47,7 @@ button {
     z-index: 3;
 }
 
-.character-bar__star{
+.character-bar__star {
     position: absolute;
     top: 33px;
     left: 32px;
@@ -55,36 +56,28 @@ button {
 
 }
 
-/*.speed-up {*/
-    /*animation: speedup 3s 1 linear;*/
-/*}*/
+/*пример подпрыгивания и кручения звезды для увеличения скорости - пока по hover на круг*/
+.character-bar__speed:hover .character-bar__star {
+    animation: speedup 1s 1 ease-out;
+}
 
-/*@keyframes speedup {*/
-    /*from {*/
-        /*transform: translate(0, 0);*/
-    /*}*/
-    /*20% {*/
-        /*transform: translate(0, 120px);*/
-
-    /*}*/
-    /*80% {*/
-
-        /*transform: rotate(0deg);*/
-    /*}*/
-    /*90% {*/
-
-        /*transform: rotate(500deg);*/
-    /*}*/
-    /*95% {*/
-
-        /*transform: rotate(780deg);*/
-    /*}*/
-    /*100% {*/
-        /*transform: translate(0, 0);*/
-
-    /*}*/
-/*}*/
-
+@keyframes speedup {
+    0% {
+        -webkit-transform: translateX(0px) translateY(0px) rotate(0deg);
+    }
+    20% {
+        -webkit-transform: translateX(0px) translateY(-50px) rotate(0deg);
+    }
+    20.01% {
+        -webkit-transform: translateX(0px) translateY(-50px) rotate(20000deg);
+    }
+    75% {
+        -webkit-transform: translateX(0px) translateY(-50px) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: translateX(0px) translateY(0px) rotate(0deg);
+    }
+}
 
 .character-bar__scores {
     width: 183px;
@@ -114,14 +107,16 @@ button {
     left: 60px;
     z-index: 1;
 }
-.character-bar__lives-box{
+
+.character-bar__lives-box {
     position: absolute;
     top: 15px;
     left: 95px;
 
 }
+
 .character-bar__heart {
-   padding-right: 2px;
+    padding-right: 2px;
 }
 
 .buttons-area {
@@ -131,8 +126,6 @@ button {
     align-self: center;
     display: flex;
     justify-content: flex-end;
-
-
 }
 
 .button-start {
@@ -142,13 +135,11 @@ button {
     background: #FFFFFF;
     border: 8px solid #FFFFFF;
     border-radius: 62px;
-    outline:none;
+    outline: none;
     margin-right: 17px;
     transition: .3s;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-
 }
-
 
 .button-help {
     font-size: 30px;
@@ -157,19 +148,17 @@ button {
     background: #FFFFFF;
     border: 8px solid #FFFFFF;
     border-radius: 62px;
-    outline:none;
+    outline: none;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     transition: .3s;
 }
 
-
 .button-start:hover,
-.button-help:hover  {
+.button-help:hover {
     color: #FFFFFF;
     background: #27A8F3;
     transition: .3s ease-in-out;
 }
-
 
 .game-area {
     margin: 0 auto;
@@ -180,7 +169,6 @@ button {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-
 }
 
 .game-area__wrapper {
@@ -211,7 +199,6 @@ button {
 .hole-3 {
     top: 0;
     right: 0;
-
 }
 
 .hole-4 {
@@ -223,3 +210,98 @@ button {
     left: 41px;
     bottom: 34px;
 }
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 821px;
+    height: 503px;
+    background: #27A8F3;
+    border: 23px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 65px;
+    color: #FFFFFF;
+}
+
+.popup__header {
+    width: 517px;
+    height: 96px;
+    background: #FFFFFF;
+    border: 8px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 65px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 35px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 75px;
+    color: #27A8F3;
+    position: absolute;
+    bottom: 429px;
+    left: 130px;
+}
+
+.popup__rules {
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    font-size: 20px;
+    padding: 73px 63px 0 18px;
+}
+
+.popup__button {
+    font-size: 35px;
+    width: 257px;
+    height: 77px;
+    color: #FFFFFF;
+    background: #FFE500;
+    border: 8px solid #FFFFFF;
+    border-radius: 62px;
+    outline: none;
+    transition: .3s;
+    position: absolute;
+    top: 429px;
+    left: 259px;
+}
+
+.popup__button:hover {
+    background: #FFC700;
+    transition: .3s ease-in-out;
+}
+
+.popup__list-item {
+    margin-bottom: 10px;
+}
+
+.endgame__congrats {
+    font-size: 29px;
+    margin-bottom: 20px;
+
+}
+
+.endgame__number {
+    font-size: 160px;
+    margin-bottom: -35px;
+}
+
+.endgame__score {
+    font-size: 70px;
+}
+
+
+/* скрытые попапы */
+.endgame {
+    display: none;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.guide {
+    display: none;
+}
+
+
