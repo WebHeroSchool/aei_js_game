@@ -47,7 +47,7 @@ button {
     z-index: 3;
 }
 
-.character-bar__star {
+.speed__star {
     position: absolute;
     top: 33px;
     left: 32px;
@@ -108,14 +108,14 @@ button {
     z-index: 1;
 }
 
-.character-bar__lives-box {
+.lives__lives-box {
     position: absolute;
     top: 15px;
     left: 95px;
 
 }
 
-.character-bar__heart {
+.lives-box__heart {
     padding-right: 2px;
 }
 
@@ -158,6 +158,7 @@ button {
     color: #FFFFFF;
     background: #27A8F3;
     transition: .3s ease-in-out;
+    cursor: pointer;
 }
 
 .game-area {
@@ -184,8 +185,9 @@ button {
     background: #AE8348;
     box-shadow: inset 0 9px 10px rgba(0, 0, 0, 0.2);
     position: absolute;
+    cursor: pointer;
 }
-
+button-start
 .hole-1 {
     top: 25px;
     left: 9px;
@@ -271,6 +273,7 @@ button {
 .popup__button:hover {
     background: #FFC700;
     transition: .3s ease-in-out;
+    cursor: pointer;
 }
 
 .popup__list-item {
