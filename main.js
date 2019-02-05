@@ -15,11 +15,12 @@ const startGame = () => {
         hole = document.getElementById("hole-" + getRandomHole());
         hole.setAttribute("class", "hole__animate");
         hole.innerText = getRandomEmoji();
-        hole.addEventListener("click", event => console.log("клик на " + hole.innerText));
+        let elemEventHandler = () => console.log("клик " + hole.innerText);
+        hole.addEventListener("click", elemEventHandler, false);
 
         setTimeout( () => {
                 hole.innerText = "";
-                hole.removeEventListener("click", event => console.log("удаление " + hole.innerText) );
+                hole.removeEventListener("click", elemEventHandler, false);
         }, 1000);
 
         lives--;
