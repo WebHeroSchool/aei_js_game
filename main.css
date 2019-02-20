@@ -53,11 +53,9 @@ button {
     left: 32px;
     z-index: 4;
     font-size: 24px;
-
 }
 
-/*пример подпрыгивания и кручения звезды для увеличения скорости - пока по hover на круг*/
-.character-bar__speed:hover .speed__star {
+.animate {
     animation: speedup 1s 1 ease-out;
 }
 
@@ -112,7 +110,6 @@ button {
     position: absolute;
     top: 15px;
     left: 95px;
-
 }
 
 .lives-box__heart {
@@ -150,14 +147,14 @@ button {
     border-radius: 62px;
     outline: none;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    transition: .3s;
+    transition: .25s linear,opacity .25s ease-in-out;
 }
 
 .button-start:hover,
 .button-help:hover {
     color: #FFFFFF;
     background: #27A8F3;
-    transition: .3s ease-in-out;
+
     cursor: pointer;
 }
 
@@ -231,8 +228,6 @@ button {
     transition:top 1s ease-out 0.5s;
 }
 
-
-
 .popup {
     position: absolute;
     top: 50%;
@@ -303,7 +298,6 @@ button {
 .endgame__congrats {
     font-size: 29px;
     margin-bottom: 20px;
-
 }
 
 .endgame__number {
@@ -315,18 +309,18 @@ button {
     font-size: 70px;
 }
 
-
 /* скрытые попапы */
 .endgame {
     display: none;
     text-align: center;
     padding-top: 50px;
+    z-index: 5;
 }
 
 .guide {
     display: none;
+    z-index: 5;
 }
-
 
 @media screen and (max-width: 960px) {
 body {

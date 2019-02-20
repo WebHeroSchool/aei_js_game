@@ -1,67 +1,102 @@
+let score = document.getElementsByClassName("character-bar__scores")[0];
+
 const startGame = () => {
-    let lives = 15;   // Пока рандомно показываем эмоджи в цикле, уменьшая жизни
+    document.querySelector('button.button-start').removeEventListener("click", startGame);
+    let lives = 3;
+    let speed = document.getElementById('currentSpeed');
+    speed.innerHTML = '0';
+    score.innerHTML = '0';
+    let star = document.querySelector('svg.speed__star');
+    let miceCount = 0;
+    let liveCount = document.querySelectorAll("div.lives__lives-box > svg");
+    let hearts = document.querySelectorAll("div.lives__lives-box > svg > path");
+    for (let i = 0; i< hearts.length; i++ ) {
+        hearts[i].setAttribute("fill", "#FF1A00");
+    }
 
-    let delayTime = setInterval(() => {
-        let emojiArr = ["🐭", "🐶", "🐱", "🐼", "🐷", "🐵", "🐰"];
-        let getRandomEmoji = () =>
-            emojiArr[Math.floor(Math.random() * emojiArr.length)];  //рандомный эмоджи
+    const isMice = emoji => emoji === "🐭";
 
-        let hole;
-        let getRandomHole = () =>
-            Math.floor(Math.random() * 5); //рандомная нора
+    let getRandomHole = () =>
+        Math.floor(Math.random() * 5); //рандомная нора
 
-        // const holes = ["hole-1","hole-2","hole-3","hole-4","hole-5"];
+    const emojiArr = ["🐭", "🐶", "🐱", "🐼", "🐭", "🐷", "🐵", "🐰", "🐭", "🐭"];
 
-        hole = document.getElementById("hole-" + getRandomHole());
+    let getRandomEmoji = () =>
+        emojiArr[Math.floor(Math.random() * emojiArr.length)];
+
+    let delayTime = setInterval(() => doGame(), 3000);
+
+    const doGame = () => {
+        let hole = document.getElementById("hole-" + getRandomHole());
+        star.setAttribute("class", "speed__star");
         hole.setAttribute("class", "hole__animate");
         hole.innerText = getRandomEmoji();
-        let elemEventHandler = () => console.log("клик " + hole.innerText);
-        hole.addEventListener("click", elemEventHandler, false);
 
-        setTimeout( () => {
-                hole.innerText = "";
-                hole.removeEventListener("click", elemEventHandler, false);
-        }, 1000);
-
-        lives--;
-
-        console.log("Показываем " + hole.innerText + ". Время:" + Date());
-
-        if (lives === 0) {
-            clearInterval(delayTime);
-            console.log(Date() + " Конец");
+        if (isMice(hole.innerText)) {
+            miceCount++;
+            if (miceCount % 5 === 0) {
+                star.setAttribute("class", "speed__star animate");
+                speed.innerHTML = Number(speed.innerHTML) + 1;
+                clearInterval(delayTime);
+                delayTime = setInterval(() =>
+                    doGame(), 3000 - Number(speed.innerHTML)*200);
+            }
         }
 
-    }, 3000);
+        let emojiClick = () => {
+            if (isMice(hole.innerText)) {
+                score.innerHTML = Number(score.innerHTML) + 10;
+                hole.innerText = "";
+                hole.removeEventListener("click", emojiClick, false);
+            } else {
+                --lives;
+                liveCount[lives].querySelector('path').setAttribute("fill", "#A0B4BE");
+                hole.innerText = "";
+                hole.setAttribute("class", "");
+                hole.removeEventListener("click", emojiClick, false);
 
-    console.log(lives + " повторов")
+                if (lives === 0) {
+                    clearInterval(delayTime);
+                    console.log(Date() + " Конец");
+                    showEndgame();
+                }
+            }
+        };
+
+        hole.addEventListener("click", emojiClick, false);
+
+        setTimeout( () => {
+            hole.innerText = "";
+            hole.removeEventListener("click", emojiClick, false);
+        }, 1000);
+    }
+
 };
 
+//popups
+const showHelp = () => {
+    let guide = document.getElementsByClassName("guide")[0].style.display = "block";
+    document.querySelector('div.guide > button.popup__button').addEventListener("click", closePopup);
+};
+
+const showEndgame = () => {
+    let popupScore = document.getElementsByClassName("endgame__number")[0];
+    popupScore.innerHTML = score.innerHTML;
+    let endgame = document.getElementsByClassName("endgame")[0].style.display = "block";
+    document.querySelector('div.endgame > button.popup__button').addEventListener("click", closePopup);
+};
+
+const closePopup = () => {
+    document.getElementsByClassName("guide")[0].style.display = "none";
+    document.getElementsByClassName("endgame")[0].style.display = "none";
+    document.querySelector('button.button-start').addEventListener("click", startGame);
+};
 
 //запуск игры по клику на кнопке "Старт"
-document.querySelector('body > div > header > div.buttons-area > button.button-start').addEventListener("click", startGame);
+document.querySelector('button.button-start').addEventListener("click", startGame);
+
+//help
+document.querySelector('button.button-help').addEventListener("click", showHelp);
 
 
-    /* let showEmoji =() => {
-         hole = document.getElementById("hole-" + getRandomHole());
-         console.log(hole);
-         hole.innerText = getRandomEmoji();
-         console.log('2' + hole.innerText);
-         hole.setAttribute("class", "hole__animate")
-         hole.addEventListener("click", event => console.log(hole));
-         lives--;
-         console.log(Date() + " aaa " );
-         if (lives === 0) {
-             console.log(Date() + " aaaaaaaaaaaaaaaaa");
-         }
-     };*/
 
-    //console.log(hole[0].innerText = getRandomEmoji());
-    // console.log(hole[0].innerText = "");
-    // console.log("Появление " + getRandomEmoji() + " из норы " + holes[getRandomHole()] );
-    // console.log(document.getElementsByClassName(holes[getRandomHole()]));
-    // const timer = setInterval( () => {
-    //     console.log(hole[0].innerText = getRandomEmoji())
-    // }, 2000 );
-
-    // setTimeout( () => clearInterval(timer), 10000);
