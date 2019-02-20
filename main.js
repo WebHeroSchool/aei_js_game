@@ -48,7 +48,6 @@ const startGame = () => {
                 score.innerHTML = Number(score.innerHTML) + 10;
                 hole.innerText = "";
                 hole.removeEventListener("click", emojiClick, false);
-                console.log("клик мышь" + hole.innerText);
             } else {
                 --lives;
                 liveCount[lives].querySelector('path').setAttribute("fill", "#A0B4BE");
